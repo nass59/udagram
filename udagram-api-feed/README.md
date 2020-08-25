@@ -16,7 +16,7 @@ npm install .
 docker build -t udagram-api-feed .
 
 // Run the Docker Image on port 8081
-docker run -it -p 8081:8081 --env-file ./.env udagram-api-feed
+docker run -it -p 8081:8081 --env-file ./.env --name udagram-api-feed-service --network udagram-network udagram-api-feed
 ```
 
 You can visit `http://localhost:8081/api/v0/feed` in your web browser to verify that the application is running. You should see a JSON payload. Feel free to play around with Postman to test the API's.

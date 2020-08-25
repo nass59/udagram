@@ -16,7 +16,7 @@ npm install .
 docker build -t udagram-api-user .
 
 // Run the Docker Image on port 8082
-docker run -it -p 8082:8082 --env-file ./.env udagram-api-user
+docker run -it -p 8082:8082 --env-file ./.env --name udagram-api-user-service --network udagram-network udagram-api-user
 ```
 
 You can visit `http://localhost:8082/api/v0/user` in your web browser to verify that the application is running. You should see a JSON payload. Feel free to play around with Postman to test the API's.
