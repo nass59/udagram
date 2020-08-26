@@ -24,7 +24,7 @@ build: ## Build Docker Image
 	docker build -t udagram-frontend .
 
 run: ## Run Docker Image
-	docker run -it -p 8100:80 --name udagram-frontend-service --network udagram-network udagram-frontend
+	docker run -d -p 8100:80 --name udagram-frontend-service --network udagram-network udagram-frontend
 
 push-image: ## Push Image to the Docker Hub
 	docker tag udagram-frontend nass59/udagram-frontend:latest

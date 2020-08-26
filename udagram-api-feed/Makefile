@@ -19,7 +19,7 @@ build: ## Build Docker Image
 	docker build -t udagram-api-feed .
 
 run: ## Run Docker Image
-	docker run -it -p 8081:8081 --env-file ./.env --name udagram-api-feed-service --network udagram-network -v ${HOME}/.aws/credentials:/root/.aws/credentials:ro udagram-api-feed
+	docker run -d -p 8081:8081 --env-file ./.env --name udagram-api-feed-service --network udagram-network -v ${HOME}/.aws/credentials:/root/.aws/credentials:ro udagram-api-feed
 
 push-image: ## Push Image to the Docker Hub
 	docker tag udagram-api-feed nass59/udagram-api-feed:latest

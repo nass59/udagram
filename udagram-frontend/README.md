@@ -41,7 +41,7 @@ Udagram is a simple cloud application developed alongside the Udacity Cloud Engi
 - To run the Docker image, run the command:
 
   ```bash
-  docker run -it -p 8100:8100 --name udagram-frontend-service --network udagram-network udagram-frontend
+  docker run -d -p 8100:8100 --name udagram-frontend-service --network udagram-network udagram-frontend
   ```
 
 - You can visit `http://localhost:8100` in your web browser to verify that the application is running. You should see a web interface.

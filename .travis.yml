@@ -1,0 +1,17 @@
+language: minimal
+
+services:
+  - docker
+
+jobs:
+  include:
+    - stage: build
+      before_script:
+        - docker --version # print the version for logging
+      script:
+        - make build-images
+    - stage: deploy
+      if: branch = master
+      script:
+        - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+        - make push-images

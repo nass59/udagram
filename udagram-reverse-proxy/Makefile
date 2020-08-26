@@ -12,7 +12,7 @@ build: ## Build Docker Image
 	docker build -t udagram-reverse-proxy .
 
 run: ## Run Docker Image
-	docker run -it -p 8080:8080 --name udagram-reverse-proxy-service --network udagram-network udagram-reverse-proxy
+	docker run -d -p 8080:8080 --name udagram-reverse-proxy-service --network udagram-network udagram-reverse-proxy
 
 push-image: ## Push Image to the Docker Hub
 	docker tag udagram-reverse-proxy nass59/udagram-reverse-proxy:latest

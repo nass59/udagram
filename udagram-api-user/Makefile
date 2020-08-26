@@ -19,7 +19,7 @@ build: ## Build Docker Image
 	docker build -t udagram-api-user .
 
 run: ## Run Docker Image
-	docker run -it -p 8082:8082 --env-file ./.env --name udagram-api-user-service --network udagram-network udagram-api-user
+	docker run -d -p 8082:8082 --env-file ./.env --name udagram-api-user-service --network udagram-network udagram-api-user
 
 push-image: ## Push Image to the Docker Hub
 	docker tag udagram-api-user nass59/udagram-api-user:latest
