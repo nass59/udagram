@@ -31,7 +31,7 @@ Set your environment variables to the file `.env`
 - To run the Docker image, run the command:
 
   ```bash
-  docker run -it -p 8082:8082 --env-file ./.env --name udagram-api-user-service --network udagram-network udagram-api-user
+  docker run -d -p 8082:8082 --env-file ./.env --name udagram-api-user-service --network udagram-network udagram-api-user
   ```
 
 ## Tips

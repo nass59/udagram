@@ -33,7 +33,7 @@ Set your environment variables to the file `.env`
 - To run the Docker image, run the command:
 
   ```bash
-  docker run -it -p 8081:8081 --env-file ./.env --name udagram-api-feed-service --network udagram-network -v ${HOME}/.aws/credentials:/root/.aws/credentials:ro udagram-api-feed
+  docker run -d -p 8081:8081 --env-file ./.env --name udagram-api-feed-service --network udagram-network -v ${HOME}/.aws/credentials:/root/.aws/credentials:ro udagram-api-feed
   ```
 
 - You can visit `http://localhost:8081/api/v0/feed` in your web browser to verify that the application is running. You should see a JSON payload. Feel free to play around with Postman to test the API's.
