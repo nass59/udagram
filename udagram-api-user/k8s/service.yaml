@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: udagram-api-user
+  labels:
+    app: backend
+    tier: udagram-api-user
+spec:
+  selector:
+    app: backend
+    tier: udagram-api-user
+  ports:
+    - name: "8082"
+      port: 8082
+      targetPort: 8082
