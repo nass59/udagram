@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: udagram-reverse-proxy
+  labels:
+    app: backend
+    tier: udagram-reverse-proxy
+spec:
+  type: LoadBalancer
+  selector:
+    app: backend
+    tier: udagram-reverse-proxy
+  ports:
+    - name: "8080"
+      port: 8080
+      targetPort: 8080
