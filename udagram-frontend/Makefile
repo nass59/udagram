@@ -27,7 +27,7 @@ serve:
 ##---------------------------------------------------------------------------
 
 build: ## Build Docker Image
-	docker build -t $(APP_NAME) .
+	docker build --build-arg BUILD_ENV=development -t $(APP_NAME) .
 
 run: ## Run Docker Image
 	docker run -d -p $(DOCKER_PORT) --env-file ./.env --name $(APP_NAME) --network $(DOCKER_NETWORK) $(APP_NAME)
