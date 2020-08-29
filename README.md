@@ -105,6 +105,8 @@ You will have the following results on your Docker Hub
 
 The project uses [Travis](https://travis-ci.org/) as CI/CD tool.
 
+![Success Build on Travis](screenshots/travis.png)
+
 ### Kubernetes
 
 The project uses [Kubernetes](https://kubernetes.io/) as a CD Tool to orchestrate our docker containers.
