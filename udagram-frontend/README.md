@@ -7,25 +7,11 @@ Udagram is a simple cloud application developed alongside the Udacity Cloud Engi
 - To download all the package dependencies, run the command:
 
   ```bash
-  npm install .
+  make install
   ```
 
-- Install Ionic Framework's Command Line tools for us to build and run the application:
-
   ```bash
-  npm install -g ionic
-  ```
-
-- Prepare your application by compiling them into static files.
-
-  ```bash
-  ionic build
-  ```
-
-- Run the application locally using files created from the `ionic build` command.
-
-  ```bash
-  ionic serve
+  make serve
   ```
 
 - You can visit `http://localhost:8100` in your web browser to verify that the application is running. You should see a web interface.
@@ -35,13 +21,13 @@ Udagram is a simple cloud application developed alongside the Udacity Cloud Engi
 - To build the Docker Image, run the command:
 
   ```bash
-  docker build -t udagram-frontend .
+  make build
   ```
 
 - To run the Docker image, run the command:
 
   ```bash
-  docker run -d -p 8100:8100 --name udagram-frontend-service --network udagram-network udagram-frontend
+  make run
   ```
 
 - You can visit `http://localhost:8100` in your web browser to verify that the application is running. You should see a web interface.
