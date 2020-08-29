@@ -6,16 +6,17 @@ services:
 jobs:
   include:
     - stage: build
+      if: branch = master
       install:
         # Install AWS CLI
         - curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
         - unzip awscliv2.zip
         - sudo ./aws/install
         - export PATH=~/bin:$PATH
-        
+
         # Check if aws CLI is installed
         - aws --version
-  
+
         # Create aws dir
         - mkdir ${HOME}/.aws
 
@@ -41,10 +42,6 @@ jobs:
         # Push Docker images to Docker Hub
         - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
         - make push-images
-    
-    - stage: deploy
-      if: branch = master
-      script:
         # k8s-set-env: ## Set Env Variables
         - make k8s-set-env
         # Add Env variables to EKS
@@ -57,4 +54,3 @@ jobs:
         - kubectl get pods
         - kubectl get deployments
         - kubectl get services
-        
