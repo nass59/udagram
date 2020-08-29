@@ -7,11 +7,35 @@ jobs:
   include:
     - stage: build
       before_script:
-        - docker --version # print the version for logging
+        # Install kubectl
+        - curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl
+        - chmod +x ./kubectl
+        - sudo mv ./kubectl /usr/local/bin/kubectl
+        # Check communication with EKS
+        - kubectl get pods
       script:
+        # Print docker version
+        - docker --version
+        # Build all images for production
         - make build-images
+      after_success:
+        # Push Docker images to Docker Hub
+        - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+        - make push-images
+    
     - stage: deploy
       if: branch = master
       script:
-        - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-        - make push-images
+        # k8s-set-env: ## Set Env Variables
+        - make k8s-set-env
+        # Add Env variables to EKS
+        - make k8s-env
+        # Apply Deployments and Services to EKS
+        - make k8s-deploy
+        # Deploy new images to EKS
+        - make k8s-deploy-images
+        # Check
+        - kubectl get pods
+        - kubectl get deployments
+        - kubectl get services
+        
