@@ -11,7 +11,7 @@ Set your environment variables to the file `.env`
 - To download all the package dependencies, run the command:
 
   ```bash
-  npm install .
+  make install
   ```
 
 - Run the application locally.
@@ -25,13 +25,13 @@ Set your environment variables to the file `.env`
 - To build the Docker Image, run the command:
 
   ```bash
-  docker build -t udagram-api-user .
+  make build
   ```
 
 - To run the Docker image, run the command:
 
   ```bash
-  docker run -d -p 8082:8082 --env-file ./.env --name udagram-api-user-service --network udagram-network udagram-api-user
+  make run
   ```
 
 ## Tips

@@ -15,13 +15,13 @@ docker network create -d bridge udagram-network
 - To build the Docker Image, run the command:
 
   ```bash
-  docker build -t udagram-reverse-proxy .
+  make build
   ```
 
 - To run the Docker image, run the command:
 
   ```bash
-  docker run -d -p 8080:8080 --name udagram-reverse-proxy-service --network udagram-network udagram-reverse-proxy
+  make run
   ```
 
 - You can visit `http://localhost:8080/api/v0/feed` in your web browser to verify that the application is running. You should see a JSON payload. Feel free to play around with Postman to test the API's.
